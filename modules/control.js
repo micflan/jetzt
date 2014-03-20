@@ -79,6 +79,18 @@
 
     });
   };
+  
+  control.touch = function(executor) {
+     jetzt.view.reader.addEventListener("touchstart", function(ev) {
+          killEvent(ev);
+          executor.toggleRunning();
+     }, false);
+     
+     jetzt.view.reader.addEventListener("touchend", function(ev) {
+          killEvent(ev);
+          executor.toggleRunning();
+     }, false);
+  }
 
   window.addEventListener("keydown", function (ev) {
     if (!jetzt.isOpen() && ev.altKey && ev.keyCode === 83) {
